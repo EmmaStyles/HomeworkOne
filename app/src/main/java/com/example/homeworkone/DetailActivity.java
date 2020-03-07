@@ -7,8 +7,10 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.util.Random;
+import java.util.random;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -21,15 +23,13 @@ public class DetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail);
     }
 
-    private TextView mName;
-    private TextView mSymbol;
-    private TextView mValue;
-    private TextView mChange1h;
-    private TextView mChange24h;
-    private TextView mChange7d;
-    private TextView mMarketcap;
-    private TextView mVolume;
-    private ImageView mSearch;
+    private TextView mResults;
+    private TextView mDice1;
+    private TextView mDice1Field;
+    private TextView mDice2;
+    private TextView mDice2Field;
+    private TextView mSum;
+    private TextView mSumField;
 
     private static final String TAG = "DetailActivity";
 
@@ -38,26 +38,31 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-        mName = findViewById(R.id.tvName);
-        mSymbol = findViewById(R.id.tvSymbol);
-        mValue = findViewById(R.id.tvValueField);
-        mChange1h = findViewById(R.id.tvChange1hField);
-        mChange24h = findViewById(R.id.tvChange24hField);
-        mChange7d = findViewById(R.id.tvChange7dField);
-        mMarketcap = findViewById(R.id.tvMarketcapField);
-        mVolume = findViewById(R.id.tvVolumeField);
-        mSearch = findViewById(R.id.ivSearch);
+        mResults = findViewById(R.id.tvResults);
+        mDice1 = findViewById(R.id.tvDice1);
+        mDice1Field = findViewById(R.id.tvDice1Field);
+        mDice2 = findViewById(R.id.tvDice2);
+        mDice2Field = findViewById(R.id.tvDice2Field);
+        mSum = findViewById(R.id.tvSum);
+        mSumField = findViewById(R.id.tvSumField);
 
 
         Intent intent = getIntent();
-        String coinSymbol = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
 
-        Log.i(TAG, "Coin-Symbol = " + coinSymbol);
-        NumberFormat formatter = NumberFormat.getCurrencyInstance();
+        int min = 1;
+        int max = 6;
+        int random1 = new Random().nextInt((max - min) + 1) + min;
+        int random2 = new Random().nextInt((max - min) + 1) + min;
 
-        ArrayList<Coin> coins = Coin.getCoins();
 
-        final Coin coin = Coin.searchCoin(coinSymbol);
+        //String coinSymbol = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+
+        //Log.i(TAG, "Coin-Symbol = " + coinSymbol);
+        //NumberFormat formatter = NumberFormat.getCurrencyInstance();
+
+        //ArrayList<Coin> coins = Coin.getCoins();
+
+        final Roll roll = Roll.searchRoll(coinSymbol);
 
         mName.setText(coin.getName());
         mSymbol.setText(coin.getSymbol());
@@ -112,4 +117,5 @@ public class DetailActivity extends AppCompatActivity {
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
         startActivity(intent);
     }
+
 }
