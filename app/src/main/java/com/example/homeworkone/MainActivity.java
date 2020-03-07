@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Log.i(TAG,"onCreate Called");
         setContentView(R.layout.activity_main);
+
         mButton = findViewById(R.id.btnRoll);
         mQuestion = findViewById(R.id.ivQuestion);
 
@@ -33,10 +34,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void launchDetailActivity(String message){
-        Intent intent = new Intent( this, DetailActivity.class);
+        Intent intent = new Intent(this, DetailActivity.class);
         intent.putExtra(EXTRA_MESSAGE, message);
         startActivity(intent);
-
     }
 
     @Override

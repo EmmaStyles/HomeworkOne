@@ -21,6 +21,7 @@ public class Roll {
     public void setDice1(int dice1) {
         this.dice1 = dice1;
     }
+
     public int getDice2() {
         return dice2;
     }
@@ -33,8 +34,8 @@ public class Roll {
         return sum;
     }
 
-    public void setSum(int dice1, int dice2) {
-        this.sum = dice1 + dice2;
+    public void setSum(int sum) {
+        this.sum = sum;
     }
 
 }
