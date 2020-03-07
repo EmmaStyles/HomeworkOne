@@ -12,6 +12,7 @@ import java.util.Random;
 
 
 public class DetailActivity extends AppCompatActivity {
+    private TextView mResults;
     private TextView mDice1Field;
     private TextView mDice2Field;
     private TextView mSumField;
@@ -22,15 +23,17 @@ public class DetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
-        Log.i(TAG,"onCreate Called");
 
+        Intent intent = getIntent();
+        String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+
+        mResults = findViewById(R.id.tvResults);
+        mResults.setText(message);
 
         mDice1Field = findViewById(R.id.tvDice1Field);
         mDice2Field = findViewById(R.id.tvDice2Field);
         mSumField = findViewById(R.id.tvSumField);
 
-
-        //Intent intent = getIntent();
 
         int min = 1;
         int max = 6;
