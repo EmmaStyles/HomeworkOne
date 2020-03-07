@@ -32,32 +32,32 @@ public class DetailActivity extends AppCompatActivity {
         int random1 = new Random().nextInt((max - min) + 1) + min;
         int random2 = new Random().nextInt((max - min) + 1) + min;
 
-        int sum = random1 + random2;
+        //int sum = random1 + random2;
 
-        //Roll roll = new Roll();
+        Roll roll = new Roll();
 
-        
-        mDice1 = findViewById(R.id.tvDice1Field);
-        mDice1.setText("" + random1);
 
-        mDice2 = findViewById(R.id.tvDice2Field);
-        mDice2.setText("" + random2);
-
-        mSum = findViewById(R.id.tvSumField);
-        mSum.setText("" + sum);
-
-//        roll.setDice1(random1);
-//        roll.setDice2(random2);
-//        int sum = (roll.getDice1() + roll.getDice2());
-//        roll.setSum(sum);
-//
 //        mDice1 = findViewById(R.id.tvDice1Field);
-//        mDice2 = findViewById(R.id.tvDice2Field);
-//        mSum = findViewById(R.id.tvSumField);
+//        mDice1.setText("" + random1);
 //
-//        mDice1.setText((roll.getDice1()));
-//        mDice2.setText(roll.getDice2());
-//        mSum.setText(roll.getSum());
+//        mDice2 = findViewById(R.id.tvDice2Field);
+//        mDice2.setText("" + random2);
+//
+//        mSum = findViewById(R.id.tvSumField);
+//        mSum.setText("" + sum);
+
+        roll.setDice1(random1);
+        roll.setDice2(random2);
+        int sum = (roll.getDice1() + roll.getDice2());
+        roll.setSum(sum);
+
+        mDice1 = findViewById(R.id.tvDice1Field);
+        mDice2 = findViewById(R.id.tvDice2Field);
+        mSum = findViewById(R.id.tvSumField);
+
+        mDice1.setText("" + roll.getDice1());
+        mDice2.setText("" + roll.getDice2());
+        mSum.setText("" + roll.getSum());
 
     }
 }
